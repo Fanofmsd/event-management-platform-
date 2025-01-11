@@ -22,13 +22,13 @@ const eventSchema = new mongoose.Schema({
   eventdate: { type: Date, required: true },
   eventattendances: [
     {
-      attendeeId: { type: mongoose.Schema.Types.ObjectId, ref: 'Attendance' }, // Reference to Attendance model
+      attendeeId: { type: mongoose.Schema.Types.ObjectId, ref: 'Attendance' }, 
 	attendeeName:String
     }
   ],
 taskslist:[
     {
-      taskId: { type: mongoose.Schema.Types.ObjectId, ref: 'Task' }, // Reference to Attendance model
+      taskId: { type: mongoose.Schema.Types.ObjectId, ref: 'Task' }, 
 taskName:String   
 }
 
@@ -42,7 +42,7 @@ const attendanceSchema = new mongoose.Schema({
   attendeeNumber: { type: Number, required: true },
   assignedTasks: [
     {
-      taskId: { type: mongoose.Schema.Types.ObjectId, ref: 'Task' }, // Reference to Task model
+      taskId: { type: mongoose.Schema.Types.ObjectId, ref: 'Task' }, 
 	taskName:String    
 }
   ],
@@ -55,11 +55,11 @@ const taskSchema = new mongoose.Schema({
   taskDescription: { type: String, required: true },
   deadline: { type: Date, required: true },
   status: { type: String, enum: ['Pending', 'Completed'], required: true },
-  eventId: { type: mongoose.Schema.Types.ObjectId, ref: 'Event' }, // Reference to Event model
+  eventId: { type: mongoose.Schema.Types.ObjectId, ref: 'Event' }, 
   assignedTo: [
     {
-      attendeeId: { type: mongoose.Schema.Types.ObjectId, ref: 'Attendance' }, // Reference to Attendance model
-      attendeeName: String // Reference to Attendance model
+      attendeeId: { type: mongoose.Schema.Types.ObjectId, ref: 'Attendance' }, 
+      attendeeName: String 
 
     }
   ],
@@ -188,7 +188,7 @@ app.get('/getAttendance', async (req, res) => {
 });
 
 app.put('/updateAttendence', async (req, res) => {
-  const { id, status } = req.body; // 'id' is the attendance record ID, 'status' is the new attendance status
+  const { id, status } = req.body;
 
   try {
     const updatedAttendance = await Attendance.findByIdAndUpdate(id, { status }, { new: true });
@@ -233,7 +233,7 @@ app.post('/addtask', async (req, res) => {
     const updatedEvent = await Event.findByIdAndUpdate(
       eventId, 
       { $push: { taskslist: { taskId, taskName } } },  
-      { new: true }  // Return the updated document
+      { new: true }  
     );
 
     res.status(200).json({ 
@@ -306,9 +306,9 @@ console.log(req.body);
       { new: true }     );
 
     const updatedEvent = await Event.findByIdAndUpdate(
-      eventId,  // Use eventId to update the correct event record
+      eventId,  
       { eventattendances: {attendeeId,attendeeName} },  
-      { new: true }  // Return the updated document
+      { new: true }  
     );
 const updatedTask = await Task.findByIdAndUpdate(taskId, { $push: {assignedTo: {attendeeId,attendeeName }}},{ new: true });
    

@@ -191,8 +191,8 @@ const styles = {
     borderRadius: '8px',
     width: '400px',
     maxWidth: '90%',
-    maxHeight: '80vh', // Limit the height of the modal content
-    overflowY: 'auto', // Enable vertical scrolling if content overflows
+    maxHeight: '80vh', 
+    overflowY: 'auto', 
     position: 'relative',
   },
   closeButton: {
