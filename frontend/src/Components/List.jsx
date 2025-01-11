@@ -3,7 +3,7 @@ import { Button, Typography, Grid, Paper, CircularProgress, IconButton, Box } fr
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Modal from './Modal'; // Assuming Modal uses MUI as well
+import Modal from './Modal'; 
 
 function List({ currentComponent, setDashboard }) {
   const [isModalOpen, openModal] = useState(false);
@@ -82,7 +82,7 @@ function List({ currentComponent, setDashboard }) {
 
       if (response.ok) {
         closeModal();
-        fetchData(); // Refetch the updated list
+        fetchData(); 
       } else {
         console.error('Error processing request');
         alert(`Error processing request. Please try again.`);
